@@ -1,7 +1,6 @@
-// src/pages/auth/Login.js
 import React, { useState } from 'react';
 import { loginUser } from '../../api/userapi';  // API function to login
-import { useAuth } from '../../hooks/useAuth';  // Custom hook to manage login state
+//import { useAuth } from '../../hooks/useAuth';  // Custom hook to manage login state
 
 const Login = ({ login }) => {
   const [email, setEmail] = useState('');
@@ -12,42 +11,47 @@ const Login = ({ login }) => {
     e.preventDefault();
 
     try {
-      // Call the login function, assuming it returns { token, username }
-      const response = await loginUser(email, password);  
-      const { token, username } = response;  // Destructure the response to get token and username
+      const response = await loginUser(email, password);
+      const { token, username } = response;
 
-      // Store token and username in localStorage
-      localStorage.setItem('authToken', token);  // Save the token in localStorage
-      localStorage.setItem('username', username);  // Save the username in localStorage
+      // Save the token and username in localStorage
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('username', username);
 
       login(token);  // Update the app state with the token
-      window.location.href = '/';  // Redirect to home or profile page
+      window.location.href = '/';  // Redirect to the home or profile page
     } catch (error) {
       setErrorMessage('Invalid credentials');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input 
-          type="email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          placeholder="Email" 
-          required 
-        />
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Password" 
-          required 
-        />
-        <button type="submit">Login</button>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Login</h2>
+      <form onSubmit={handleLogin} className="w-50 mx-auto">
+        <div className="mb-3">
+          <input 
+            type="email" 
+            className="form-control" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Email" 
+            required 
+          />
+        </div>
+        <div className="mb-3">
+          <input 
+            type="password" 
+            className="form-control" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            placeholder="Password" 
+            required 
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100">Login</button>
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <p className="text-danger text-center mt-3">{errorMessage}</p>}
     </div>
   );
 };

@@ -1,45 +1,195 @@
-.App {
-  text-align: center;
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+  background-image: url("../public/map.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+
+
+
+/* App Wrapper */
+.App {
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* Header */
+header {
+  background-color: #232323; /* Rich dark grey with a hint of warmth */
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+header:hover {
+  background-color: #141414; /* Slightly darker shade on hover */
+}
+
+h1 {
+  font-family: 'Georgia', serif;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #f4f7fa; /* Light text for a high-contrast look */
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav button {
+  font-size: 16px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav button:hover {
+  background-color: #007bff; /* Luxury blue accent color */
+  transform: scale(1.05); /* Slight grow effect for buttons */
+}
+
+/* Country List */
 .country-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 20px 0;
 }
 
 .country-card {
-  width: 200px;
+  width: 230px;
   margin: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  padding: 20px;
+  border: 1px solid #444; /* Darker border for a more refined look */
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  background-color: #2c2c2c; /* Dark gray background for the card */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.country-card:hover {
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px); /* Lift effect */
 }
 
 .country-card img {
   width: 100%;
   height: auto;
-  max-height: 150px; /* Set a max-height for the flag image */
-  object-fit: contain; /* Ensure the image fits well */
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
-input, select {
-  padding: 10px;
-  margin: 10px;
+.country-card h2 {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #fff; /* White text for the title */
+}
+
+.country-card p {
+  font-size: 14px;
+  color: #b0b0b0; /* Lighter gray for text */
+}
+
+input,
+select {
+  padding: 12px;
+  margin: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
+input:focus,
+select:focus {
+  border-color: #007bff; /* Blue border on focus */
+  transform: scale(1.02); /* Slight grow effect on focus */
+}
+
+/* Filter Container */
 .filter-container {
   display: inline-block;
-  margin: 10px;
+  margin: 20px;
 }
 
-.language-filter {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* Cookie Consent Popup */
+.cookie-consent-popup {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333; /* Deep dark background */
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.cookie-consent-popup button {
+  margin: 5px;
+  padding: 12px 20px;
+  background-color: #28a745; /* Premium green button color */
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cookie-consent-popup button:hover {
+  background-color: #218838;
+  transform: scale(1.05); /* Slight grow effect */
+}
+
+/* Hover effect on buttons */
+.hover-btn {
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.hover-btn:hover {
+  background-color: #007bff; /* Dark blue background on hover */
+  color: #fff; /* White text on hover */
+}
+
+@media (max-width: 768px) {
+  .country-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .country-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+}
+
+.btn:hover {
+  background-color: #007bff;
+  transform: scale(1.05);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
